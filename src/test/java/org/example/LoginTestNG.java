@@ -9,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AppTest {
+public class LoginTestNG {
 
     WebDriver driver;
 
@@ -53,19 +53,13 @@ public class AppTest {
         WebElement loginBtn = driver.findElement(By.id("submit"));
         loginBtn.click();
 
-        // Wait for error message to appear
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         WebElement error = driver.findElement(By.id("error"));
         Assert.assertTrue(error.isDisplayed(),
                 "Error message not shown for wrong password");
 
         System.out.println("TEST 2 PASSED - Wrong password correctly rejected");
     }
+
     // This runs AFTER every test
     // Closes the browser
     @AfterMethod
